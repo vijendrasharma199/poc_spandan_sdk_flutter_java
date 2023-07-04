@@ -33,9 +33,9 @@ public class MainActivity extends FlutterActivity {
 
         setUpConnection();
 
-        sendCommand("0");
-        sendCommand("1");
-        sendCommand("2");
+//        sendCommand("0");
+//        sendCommand("1");
+//        sendCommand("2");
     }
 
     private void sendCommand(String command) {
