@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.8.21'
     repositories {
         google()
         mavenCentral()
@@ -19,24 +19,26 @@ allprojects {
         maven {
             url = uri("https://maven.pkg.github.com/sunfox-technologies/ecg_processor")
             credentials {
-                username = System.getenv("PUBLISHER_USERNAME")
-                password = System.getenv("PUBLISHER_TOKEN")
+//                username = System.getenv("PUBLISHER_USERNAME")
+//                password = System.getenv("PUBLISHER_TOKEN")
+                username = "calidad_healthcare"
+                password = "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"
             }
         }
 
         maven {
             url = uri("https://maven.pkg.github.com/sunfox-technologies/spandan_ecg_android_sdk")
             credentials {
-                username = System.getenv("PUBLISHER_USERNAME")
-                password = System.getenv("PUBLISHER_TOKEN")
+                username = "calidad_healthcare"
+                password = "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"
             }
         }
 
         maven {
             url = uri("https://maven.pkg.github.com/sunfox-technologies/sericom")
             credentials {
-                username = System.getenv("PUBLISHER_USERNAME")
-                password = System.getenv("PUBLISHER_TOKEN")
+                username = "calidad_healthcare"
+                password = "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"
             }
         }
 
