@@ -17,6 +17,7 @@ import in.sunfox.healthcare.commons.android.spandan_sdk.OnInitializationComplete
 import in.sunfox.healthcare.commons.android.spandan_sdk.SpandanSDK;
 import in.sunfox.healthcare.commons.android.spandan_sdk.collection.EcgTest;
 import in.sunfox.healthcare.commons.android.spandan_sdk.collection.EcgTestCallback;
+import in.sunfox.healthcare.commons.android.spandan_sdk.connection.DeviceInfo;
 import in.sunfox.healthcare.commons.android.spandan_sdk.connection.OnDeviceConnectionStateChangeListener;
 import in.sunfox.healthcare.commons.android.spandan_sdk.enums.DeviceConnectionState;
 import in.sunfox.healthcare.commons.android.spandan_sdk.enums.EcgPosition;
@@ -54,8 +55,8 @@ public class MainActivity extends FlutterActivity {
                 (call, result) -> {
                     switch (call.method) {
                         case "setUpConnection": {
-                            setUpConnection();
-                            result.success(true);
+                            setUpConnection(result);
+//                            result.success(true);
                         }
                         break;
 
@@ -174,7 +175,7 @@ public class MainActivity extends FlutterActivity {
 
     }
 
-    private void setUpConnection() {
+    private void setUpConnection(MethodChannel.Result result) {
         SpandanSDK.initialize(getApplication(),
                 "iDOSFfTw712TOGIu", new OnInitializationCompleteListener() {
                     @Override
@@ -194,8 +195,9 @@ public class MainActivity extends FlutterActivity {
                             }
 
                             @Override
-                            public void onDeviceVerified() {
-                                Log.d(TAG, "onDeviceVerified:");
+                            public void onDeviceVerified(@NonNull DeviceInfo deviceInfo) {
+                                Log.d(TAG, "onDeviceVerified: " + deviceInfo);
+                                result.success(true);
                             }
                         });
                     }
